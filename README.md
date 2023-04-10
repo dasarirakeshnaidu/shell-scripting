@@ -7,3 +7,5 @@ This is a repository created to publish all the Bash Bascis and project automati
 * Then we will automate the infrastructure provisioning
 * And then Configuration Management.
 * Bash Scripting Agenda
+
+This is to demonstrate personal access token
