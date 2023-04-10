@@ -13,4 +13,4 @@
     # sh scriptName 
     # ./scriptName
 
-echo Hello World 
+echo Hello world 
