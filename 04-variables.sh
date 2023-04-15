@@ -3,9 +3,9 @@
 # What is a variable??
 #  which holds the value dynamically
 
-$a=10
-$b=20
-$c=30
+a=10
+b=20
+c=30
 
 # No datatypes are available in bash by default
 
