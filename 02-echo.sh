@@ -14,3 +14,5 @@ echo lineA\nlineB
 # to use escape seq characters, you need to enable the escape sequence using the option called '-e'
 
 echo -e "lineA\nlineB"
+
+echo -e "lineA\n\tlineB"
