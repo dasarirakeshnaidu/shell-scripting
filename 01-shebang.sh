@@ -14,3 +14,9 @@
     # ./scriptName
 
 echo Hello world 
+echo This is first session of bash 
+echo We know how to run a  script
+
+echo line1
+echo line2
+echo line3
