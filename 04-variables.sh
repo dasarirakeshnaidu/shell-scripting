@@ -17,4 +17,9 @@ c=30
 
 # echo $a or echo $(a) or echo "$a"
 
+
+echo $a 
+echo ${a} 
+echo "$c"
+
 echo "I am printing the value of d $d"
