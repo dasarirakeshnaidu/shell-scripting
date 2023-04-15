@@ -19,3 +19,6 @@
 # echo -e "\e[COL-CODEm Your msg to be printed \e[0m"
 
 echo -e "\e[32m I am printing Green color \e[0m"
+
+echo -e "\e[43;32m I am printing Green color with yellow as Background \e[0m"
+
