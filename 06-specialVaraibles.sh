@@ -17,3 +17,5 @@ echo third value is $3
 # echo $@ : going to print the used variables
 # echo $$ : going to print the PID of current process 
 # echo $# : going to print the total no. of arguments
+# echo $? : going to print the exit code of last command
+
