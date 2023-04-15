@@ -19,7 +19,14 @@ c=30
 
 
 echo $a 
-echo ${a} 
+echo ${b} 
 echo "$c"
 
 echo "I am printing the value of d $d"
+
+# When you try to print a variable which is not declared, bash is going to consider that as Null or empty
+
+# rm -rf /data/${DATA_DIR}   # /data/test  ---> rm -rf /data/
+
+# How do you supply variables from the command line 
+# export varName =  value 
