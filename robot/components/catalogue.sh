@@ -30,7 +30,7 @@ echo -n "Installing NodeJS : "
 yum install nodejs -y  &>> $LOGFILE
 stat $?
 
-id $APPUSER 
+id $APPUSER   &>> $LOGFILE
 if [ $? -ne 0 ] ; then
       echo -n "Creating the Application User account : "
       useradd roboshop  &>> $LOGFILE
@@ -41,7 +41,7 @@ echo -n "Downloading the $COMPONENT component :"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
 stat $?
 
-echo -n "Extracting the $COMPONENT in the $APPUSER directory"
+echo -n "Extracting the $COMPONENT in the $APPUSER directory : "
 cd /home/roboshop
 unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
 
