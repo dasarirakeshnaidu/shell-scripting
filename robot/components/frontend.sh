@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # set -e
+COMPONENT=frontend
 
 # validating whether the executed user is root user or not
 ID=$(id -u)
@@ -20,37 +21,36 @@ stat() {
 }
 
 echo -n "Installing Nginx : "
-yum install nginx -y &>> /tmp/frontend.log
-
+yum install nginx -y &>> /tmp/$COMPONENT.log
 stat $?
 
-echo -n "Downloading the frontend component :"
+echo -n "Downloading the $COMPONENT component :"
 
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
-
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat $?
 
-echo -n "Performing cleanup of old frontend content :"
+echo -n "Performing cleanup of old $COMPONENT content :"
 
 cd /usr/share/nginx/html
-rm -rf *   &>> /tmp/frontend.log
+rm -rf *   &>> /tmp/$COMPONENT.log
 stat $?
 
-echo -n "Copying the downloaded frontend content : "
+echo -n "Copying the downloaded $COMPONENT content : "
 
-unzip /tmp/frontend.zip  &>> /tmp/frontend.log
-mv frontend-main/* .
+unzip /tmp/$COMPONENT.zip  &>> /tmp/$COMPONENT.log
+mv $COMPONENT-main/* .
 mv static/* .
-rm -rf frontend-main README.md
+rm -rf $COMPONENT-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
 echo -n "Starting the service: "
 
-systemctl enable nginx  &>> /tmp/frontend.log
-systemctl start nginx   &>> /tmp/frontend.log
-
+systemctl enable nginx  &>> /tmp/$COMPONENT.log
+systemctl start nginx   &>> /tmp/$COMPONENT.log
 stat $?
+
+
 # restart nginx
 
 # here there are 3 observations :
