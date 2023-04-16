@@ -62,16 +62,7 @@ mongo < catalogue.js   &>> $LOGFILE
 mongo < users.js       &>> $LOGFILE
 stat $?
 
-# # cd /tmp
-# # unzip mongodb.zip
-# # cd mongodb-main
-# # mongo < catalogue.js
-# # mongo < users.js
-# ```
 
-# Symbol `<` will take the input from a file and give that input to the command.
-
-# - Now proceed with the next component `CATALOGUE`
 
 
 
