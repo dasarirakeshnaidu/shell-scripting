@@ -2,6 +2,7 @@
 
 # set -e
 COMPONENT=frontend
+LOGFILE="/tmp/$COMPONENT.log"
 
 # validating whether the executed user is root user or not
 ID=$(id -u)
@@ -21,7 +22,7 @@ stat() {
 }
 
 echo -n "Installing Nginx : "
-yum install nginx -y &>> /tmp/$COMPONENT.log
+yum install nginx -y &>> $LOGFILE
 stat $?
 
 echo -n "Downloading the $COMPONENT component :"
@@ -32,12 +33,12 @@ stat $?
 echo -n "Performing cleanup of old $COMPONENT content :"
 
 cd /usr/share/nginx/html
-rm -rf *   &>> /tmp/$COMPONENT.log
+rm -rf *   &>> $LOGFILE
 stat $?
 
 echo -n "Copying the downloaded $COMPONENT content : "
 
-unzip /tmp/$COMPONENT.zip  &>> /tmp/$COMPONENT.log
+unzip /tmp/$COMPONENT.zip  &>> $LOGFILE
 mv $COMPONENT-main/* .
 mv static/* .
 rm -rf $COMPONENT-main README.md
@@ -46,8 +47,8 @@ stat $?
 
 echo -n "Starting the service: "
 
-systemctl enable nginx  &>> /tmp/$COMPONENT.log
-systemctl start nginx   &>> /tmp/$COMPONENT.log
+systemctl enable nginx  &>> $LOGFILE
+systemctl start nginx   &>> $LOGFILE
 stat $?
 
 
