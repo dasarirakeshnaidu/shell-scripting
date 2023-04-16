@@ -48,7 +48,8 @@ stat $?
 
 echo -n "Configuring the permissions: "
 mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
-chown -R &APPUSER:&APPUSER /home/$APPUSER/$COMPONENT
+chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
+stat $?
 
 
 # $ curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
