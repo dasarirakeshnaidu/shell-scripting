@@ -12,7 +12,7 @@
 
 # For Loop Syntax:
 
-for val in -e "\e[33m 10 20 30 40 50 \e[0m" ; do 
-    echo "value of a in the list is : $val "
+for val in  10 20 30 40 50 ; do 
+    echo "value of a in the list is : -e "\e[33m $val \e[0m"
 done 
 
