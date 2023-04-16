@@ -13,5 +13,5 @@
 # For Loop Syntax:
 
 for val in  10 20 30 40 50 ; do 
-    echo "value of a in the list is : -e \e[33m $val \e[0m"
+    echo "value of a in the list is : -e $val"
 done 
