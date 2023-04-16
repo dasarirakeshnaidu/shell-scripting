@@ -52,25 +52,23 @@ mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
 chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
 stat $?
 
+echo -n "Installing the $COMPONENT Application : "
+cd /home/$APPUSER/$COMPONENT/
+npm install &>> $LOGFILE
+stat $?
 
-# $ curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
-# $ cd /home/roboshop
-# $ unzip /tmp/catalogue.zip
-# $ mv catalogue-main catalogue
-# $ cd /home/roboshop/catalogue
-# $ npm install
 
-# ```
+echo -n "Updating the systemd file with DB details : "
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' home/$APPUSER/$COMPONENT/systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
 
-# 1. Update SystemD file with correct IP addresses
-    
-#     Update `MONGO_DNSNAME` with MongoDB Server IP
-    
-#     ```sql
-#     $ vim systemd.servce
-#     ```
-    
-# 2. Now, lets set up the service with systemctl.
+echo -n "Starting the $COMPONENT service : "
+systemctl daemon-reload    &>> $LOGFILE
+systemctl start $COMPONENT  &>> $LOGFILE
+systemctl enable $COMPONENT &>> $LOGFILE
+stat $? 
+
 
 # ```bash
 # # mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
