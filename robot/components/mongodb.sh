@@ -21,21 +21,22 @@ stat() {
     fi
 }
 
-echo -n "Configuring the $COMPONENT repo"
+echo -n "Configuring the $COMPONENT repo :"
 
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
 stat $?
 
 
-echo -n "Installing $COMPONENT"
+echo -n "Installing $COMPONENT :"
 
 yum install -y mongodb-org &>> $LOGFILE
 stat $?
 
 
-
-# systemctl enable mongod
-# systemctl start mongod
+echo -n "Starting $COMPONENT :"
+systemctl enable mongod &>> $LOGFILE
+systemctl start mongod  &>> $LOGFILE
+stat $? 
 
 # ```
 
