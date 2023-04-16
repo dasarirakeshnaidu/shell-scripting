@@ -51,7 +51,7 @@ echo -n "Downloading the $COMPONENT schema :"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat $?
 
-echo -n "Extracting the $COMPONENT schema :"
+echo -n "Extracting the $COMPONENT schema : "
 cd /tmp
 unzip $COMPONENT.zip  &>> $LOGFILE
 stat $?
