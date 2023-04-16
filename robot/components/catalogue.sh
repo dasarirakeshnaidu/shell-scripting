@@ -46,6 +46,9 @@ cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
 
+echo -n "Configuring the permissions: "
+mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
+chown -R &APPUSER:&APPUSER /home/$APPUSER/$COMPONENT
 
 
 # $ curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
