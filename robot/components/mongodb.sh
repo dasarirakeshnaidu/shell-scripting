@@ -60,7 +60,7 @@ echo -n "Injecting the schema :"
 cd /tmp/$COMPONENT-main
 mongo < catalogue.js   &>> $LOGFILE
 mongo < users.js       &>> $LOGFILE
-stst $?
+stat $?
 
 # # cd /tmp
 # # unzip mongodb.zip
