@@ -59,7 +59,7 @@ stat $?
 
 
 echo -n "Updating the systemd file with DB details : "
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' home/$APPUSER/$COMPONENT/systemd.service
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
 mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat $?
 
