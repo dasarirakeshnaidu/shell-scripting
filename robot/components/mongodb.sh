@@ -44,25 +44,23 @@ stat $?
 
 echo -n "Performing the Daemon-reload : "
 systemctl daemon-reload   &>> $LOGFILE
-systemctl restart mongod  &>> $LOGFILE
+systemctl restart mongod  
 stat $?
 
+echo -n "Downloading the $COMPONENT schema :"
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+stat $?
 
+echo -n "Extracting the $COMPONENT schema :"
 
-# ```bash
-# # systemctl restart mongod
-# ```
+unzip $COMPONENT.zip  &>> $LOGFILE
+stat $?
 
-  
-
-# - Every Database needs the schema to be loaded for the application to work.
-
-# ---
-
-#       `Download the schema and inject it.`
-
-# ```
-# # curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
+echo -n "Injecting the schema :"
+cd /tmp/$COMPONENT-main
+mongo < catalogue.js   &>> $LOGFILE
+mongo < users.js       &>> $LOGFILE
+stst $?
 
 # # cd /tmp
 # # unzip mongodb.zip
